@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/app/context/AuthContext';
-import { useSearchParams, redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { AlertCircle } from 'lucide-react';
 import { supabase } from '../../lib/supabase/client';
 import AdoptGremlinButton from '../../components/dashboard/AdoptGremlinButton';
@@ -17,8 +17,18 @@ const ChallengePage = () => {
   const [activeTab, setActiveTab] = useState<'challenge' | 'quests' | 'profile'>('quests');
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const [loading, setLoading] = useState(true);
-  const searchParams = useSearchParams();
-  const oauthError = searchParams.get('error') === 'oauth_failed';
+  const [oauthError, setOauthError] = useState(false);
+
+  // ⬇️ check for ?error=oauth_failed
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const errorParam = params.get('error');
+      if (errorParam === 'oauth_failed') {
+        setOauthError(true);
+      }
+    }
+  }, []);
 
   const handleLinkReddit = async () => {
     if (!user) return;

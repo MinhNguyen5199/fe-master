@@ -2,7 +2,7 @@
 
 import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabase/client';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import GoogleSignInButton from './auth/GoogleSignInButton';
 import AuthForm from './auth/AuthForm';
@@ -10,7 +10,6 @@ import AuthForm from './auth/AuthForm';
 export default function LoginContent() {
   const { user, userProfile, loading, signOut } = useAuth();
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [loginFormLoading, setLoginFormLoading] = useState(false);
   const [pageError, setPageError] = useState('');
@@ -22,11 +21,14 @@ export default function LoginContent() {
   }, [user, loading, router]);
 
   useEffect(() => {
-    const errorParam = searchParams.get('error');
-    if (errorParam === 'unverified') {
-      setPageError('You must verify your email before signing in. Please check your inbox.');
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const errorParam = params.get('error');
+      if (errorParam === 'unverified') {
+        setPageError('You must verify your email before signing in. Please check your inbox.');
+      }
     }
-  }, [searchParams]);
+  }, []);
 
   const handleEmailLogin = async (formData: { email: string; password: string }) => {
     setLoginFormLoading(true);
@@ -88,17 +90,6 @@ export default function LoginContent() {
       <div className="p-8 bg-white rounded-lg shadow-md w-full max-w-md text-center">
         <h1 className="text-3xl font-bold mb-4 text-gray-800">Dashboard</h1>
         <p>Logged in as: {user.email}</p>
-        {/* <p>User ID: {user.id}</p>
-        <div className="mt-4 p-4 border rounded-md bg-gray-50 text-left">
-          <h3 className="text-lg font-semibold mb-2">User Profile from DB:</h3>
-          {userProfile ? (
-            <pre className="text-sm overflow-auto max-h-60 bg-gray-100 p-2 rounded">
-              {JSON.stringify(userProfile, null, 2)}
-            </pre>
-          ) : (
-            <p>Loading profile...</p>
-          )}
-        </div> */}
         <button
           onClick={signOut}
           className="mt-6 py-2 px-4 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-md"
