@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { supabase } from '../../lib/supabase/client';
 import { useRouter } from 'next/navigation';
-
+//123
 export default function AccountPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
