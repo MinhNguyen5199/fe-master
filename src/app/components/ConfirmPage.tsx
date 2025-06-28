@@ -3,7 +3,7 @@
 
 import { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { supabase } from '../../../lib/supabase/client'
+import { supabase } from '../lib/supabase/client'
 
 export default function ConfirmPage() {
   const searchParams = useSearchParams()

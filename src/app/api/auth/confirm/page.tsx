@@ -2,7 +2,7 @@
 'use client'
 
 import { Suspense } from 'react'
-import ConfirmPage from './ConfirmPage'
+import ConfirmPage from '../../../components/ConfirmPage'
 
 export default function ConfirmPageWrapper() {
   return (

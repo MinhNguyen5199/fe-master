@@ -1,11 +1,11 @@
 'use client'
 
-import { useAuth } from '../../../context/AuthContext';
-import { supabase } from '../../../lib/supabase/client';
+import { useAuth } from '../context/AuthContext';
+import { supabase } from '../lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import GoogleSignInButton from '../../../components/auth/GoogleSignInButton';
-import AuthForm from '../../../components/auth/AuthForm';
+import GoogleSignInButton from './auth/GoogleSignInButton';
+import AuthForm from './auth/AuthForm';
 
 export default function LoginContent() {
   const { user, userProfile, loading, signOut } = useAuth();
