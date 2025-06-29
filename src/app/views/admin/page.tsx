@@ -7,21 +7,23 @@ import AdminBookManager from '../../components/AdminBookManager';
 
 export default function AdminPage() {
   const { userProfile } = useAuth();
-  const router = useRouter();
+const router = useRouter();
 
-  useEffect(() => {
-    if (!userProfile) {
-      router.push('/views/auth/login');
-      return;
-    }
-    if (!userProfile.is_admin) {
-      router.push('/');
-    }
-  }, [userProfile, router]);
+// Add a derived loading state
+const isLoading = userProfile === undefined || userProfile === null;
 
-  if (!userProfile || !userProfile.is_admin) {
-    return <div className="p-4 text-center text-gray-700">Redirecting...</div>;
+useEffect(() => {
+  if (isLoading) return; // wait until auth is resolved
+
+  if (!userProfile?.is_admin) {
+    router.push(userProfile ? '/' : '/views/auth/login');
   }
+}, [isLoading, userProfile, router]);
 
-  return <AdminBookManager />;
+if (isLoading) {
+  return <div className="p-4 text-center text-gray-700">Loading...</div>;
+}
+
+return <AdminBookManager />;
+
 }

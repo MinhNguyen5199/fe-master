@@ -1,3 +1,4 @@
+// /api/auth/forgot-password/page.tsx
 'use client'
 
 import { useState } from 'react'
@@ -13,7 +14,7 @@ export default function ForgotPasswordPage() {
   const handleReset = async () => {
     setError(null)
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/api/auth/confirm?next=/views/account/update-password`,
+      redirectTo: `${window.location.origin}/api/auth/confirm?next=/api/auth/update-password`,
     })
     if (error) {
       setError(error.message)
