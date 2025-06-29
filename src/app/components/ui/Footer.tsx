@@ -82,7 +82,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <Link href="https://bolt.new/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-block">
+        <Link href="https://bolt.new/" target="_blank" rel="noopener noreferrer" className="mt-4 hidden md:inline-block">
             <Image
               src="/badge.png"
               alt="Badge"
