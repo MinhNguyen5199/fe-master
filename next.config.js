@@ -1,6 +1,6 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   allowedDevOrigins: ['192.168.1.79','local-origin.dev', '*.local-origin.dev'],
   images: {
     dangerouslyAllowSVG: true,
