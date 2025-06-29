@@ -7,6 +7,22 @@ const Footer = () => {
   return (
     <footer className="bg-gray-100 dark:bg-gray-900 py-8 rounded-t-3xl px-4 sm:px-6 lg:px-8 shadow-inner dark:shadow-none transition-colors duration-300 border-t-2 border-indigo-100 dark:border-gray-800 w-full">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+      <Link
+  href="https://bolt.new/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-4 md:hidden"
+>
+  <Image
+    src="/badge.png"
+    alt="Badge"
+    width={100}
+    height={100}
+    className="w-20 h-20 object-contain"
+    priority
+  />
+</Link>
+
         <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
           <Link href="/" className="flex items-center space-x-2 mb-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md">
             <Book className="w-8 h-8 text-indigo-600 dark:text-indigo-400 transform hover:scale-110 transition-transform duration-200" />
