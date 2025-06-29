@@ -2,7 +2,7 @@
   "name": "books-app-frontend",
   "version": "0.1.0",
   "private": true,
-  "type": "module",  
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,7 +17,8 @@
     "next": "^14.2.4",
     "quill": "^2.0.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.8",

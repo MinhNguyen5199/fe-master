@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import DOMPurify from 'dompurify';
 import { useAuth } from '../../../context/AuthContext';
-// Removed: import Quill from 'quill';
 import BookReview from '../../../components/ui/BookReview';
 import AudioSummarySection from '../../../components/ui/AudioSummarySection';
 import VideoSummaryPage from '../../../components/ui/VideoSummaryPage';
@@ -14,9 +13,9 @@ import Footer from '@/app/components/ui/Footer';
 import Image from 'next/image';
 
 interface BookDetailPageProps {
-  params: Promise<{
+  params: {
     bookId: string;
-  }>;
+  };
 }
 
 const TOOLBAR_OPTIONS = [
@@ -34,8 +33,7 @@ const TOOLBAR_OPTIONS = [
   ['clean'],
 ];
 
-export default function BookDetailPage({ params: paramsPromise }: BookDetailPageProps) {
-  const params = React.use(paramsPromise);
+export default function BookDetailPage({ params }: BookDetailPageProps) {
   const { bookId } = params;
   const router = useRouter();
   const { userProfile, session } = useAuth();
@@ -54,7 +52,7 @@ export default function BookDetailPage({ params: paramsPromise }: BookDetailPage
   const mainSummary = book?.summaries?.[0];
 
   const quillRef = useRef<HTMLDivElement>(null);
-  const editorRef = useRef<any>(null); // useRef<any> because Quill is dynamically imported
+  const editorRef = useRef<any>(null);
 
   useEffect(() => {
     const fetchBookDetails = async (): Promise<void> => {
@@ -103,7 +101,6 @@ export default function BookDetailPage({ params: paramsPromise }: BookDetailPage
       !editorRef.current &&
       typeof window !== 'undefined'
     ) {
-      // Dynamically import Quill only on client side
       import('quill').then((QuillModule) => {
         const Quill = QuillModule.default;
 
