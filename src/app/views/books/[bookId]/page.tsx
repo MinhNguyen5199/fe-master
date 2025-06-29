@@ -207,34 +207,40 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
         <div className="p-6 max-w-4xl mx-auto my-8 bg-white dark:bg-gray-900 rounded-lg shadow-xl mt-11">
           <h1 className="text-4xl font-extrabold text-gray-900 dark:text-gray-100 mb-6 text-center">{book.title}</h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <div>
-              <p className="mb-2 text-gray-700 dark:text-gray-300">
-                <strong className="font-semibold text-gray-800 dark:text-gray-200">Author(s):</strong> {book.authors.join(', ')}
-              </p>
-              <p className="mb-2 text-gray-700 dark:text-gray-300">
-                <strong className="font-semibold text-gray-800 dark:text-gray-200">Genre(s):</strong> {book.genres.join(', ')}
-              </p>
-              {book.publication_date && (
-                <p className="mb-2 text-gray-700 dark:text-gray-300">
-                  <strong className="font-semibold text-gray-800 dark:text-gray-200">Publication Date:</strong>{' '}
-                  {new Date(book.publication_date).toLocaleDateString()}
-                </p>
-              )}
-            </div>
-            {book.cover_image_url && (
-              <div className="flex justify-center md:justify-end relative w-[200px] h-auto">
-                <Image
-                  src={book.cover_image_url}
-                  alt={book.title}
-                  width={200}
-                  height={300}
-                  className="rounded-md shadow-lg object-contain"
-                  priority
-                />
-              </div>
-            )}
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 items-start">
+  {/* Left Side – Text */}
+  <div>
+    <p className="mb-2 text-gray-700 dark:text-gray-300">
+      <strong className="font-semibold text-gray-800 dark:text-gray-200">Author(s):</strong> {book.authors.join(', ')}
+    </p>
+    <p className="mb-2 text-gray-700 dark:text-gray-300">
+      <strong className="font-semibold text-gray-800 dark:text-gray-200">Genre(s):</strong> {book.genres.join(', ')}
+    </p>
+    {book.publication_date && (
+      <p className="mb-2 text-gray-700 dark:text-gray-300">
+        <strong className="font-semibold text-gray-800 dark:text-gray-200">Publication Date:</strong>{' '}
+        {new Date(book.publication_date).toLocaleDateString()}
+      </p>
+    )}
+  </div>
+
+  {/* Right Side – Image */}
+  {book.cover_image_url && (
+    <div className="flex justify-center md:justify-end">
+      <div className="relative w-[250px] h-auto">
+        <Image
+          src={book.cover_image_url}
+          alt={book.title}
+          width={200}
+          height={300}
+          className="rounded-md shadow-lg object-contain"
+          priority
+        />
+      </div>
+    </div>
+  )}
+</div>
+
 
           {book.description && (
             <div className="mb-8">
@@ -341,7 +347,7 @@ export default function BookDetailPage({ params }: BookDetailPageProps) {
             className="mt-8 px-6 py-3 bg-gray-600 dark:bg-gray-700 text-white rounded-md hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
           >
             Back
-          </button>
+            </button>
         </div>
       </main>
       <Footer />
