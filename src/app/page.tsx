@@ -8,6 +8,7 @@ import Footer from './components/ui/Footer';
 import TestimonialsSection from './components/ui/TestimonialsSection';
 import FAQSection from './components/ui/FAQSection';
 import BookList from './components/BookList';
+import { useAuth } from './context/AuthContext';
 
 const features = [
   {
@@ -33,12 +34,13 @@ const features = [
 ];
 
 const HomePage = () => {
+  const { user} = useAuth();
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-50 font-inter transition-colors duration-300 flex flex-col">
       <Header />
 
       <main className="flex-grow pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <section className="relative text-center py-20 md:py-32 overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-700 dark:from-gray-800 dark:to-gray-900 shadow-2xl dark:shadow-indigo-500/20 transition-all duration-500 transform hover:scale-[1.005]">
+      {!user && <section className="relative text-center py-20 md:py-32 overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-700 dark:from-gray-800 dark:to-gray-900 shadow-2xl dark:shadow-indigo-500/20 transition-all duration-500 transform hover:scale-[1.005]">
           <div className="absolute inset-0 bg-pattern-dots opacity-10 dark:opacity-5"></div>
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob dark:bg-purple-600"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob [animation-delay:-2s] dark:bg-indigo-600"></div>
@@ -57,6 +59,17 @@ const HomePage = () => {
               Start Your Free Trial
               <ArrowRight className="ml-3 w-5 h-5" />
             </Link>
+          </div>
+        </section>}
+
+        
+
+        <section className="py-16">
+          <h3 className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-sky-500 dark:from-teal-300 dark:to-sky-300 animate-fade-in">
+            Trending Books Now
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <BookList/>
           </div>
         </section>
 
@@ -82,15 +95,6 @@ const HomePage = () => {
                 </p>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="py-16">
-          <h3 className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-sky-500 dark:from-teal-300 dark:to-sky-300 animate-fade-in">
-            Trending Books Now
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <BookList/>
           </div>
         </section>
 

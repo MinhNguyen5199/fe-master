@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { supabase } from '../../../lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import Header from '@/app/components/ui/Header'
+import Footer from '@/app/components/ui/Footer'
 
 export default function UpdatePasswordPage() {
   const [password, setPassword] = useState('')
@@ -22,7 +24,9 @@ export default function UpdatePasswordPage() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-20 px-4">
+    <div>
+      <Header />
+    <div className="max-w-md mx-auto mt-20 px-4 h-[60vh]">
       <h1 className="text-2xl font-semibold mb-4">Set New Password</h1>
 
       {success ? (
@@ -50,6 +54,8 @@ export default function UpdatePasswordPage() {
           </button>
         </>
       )}
+    </div>
+    <Footer />
     </div>
   )
 }

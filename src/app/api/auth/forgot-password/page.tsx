@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { supabase } from '../../../lib/supabase/client'
+import Header from '@/app/components/ui/Header'
+import Footer from '@/app/components/ui/Footer'
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('')
@@ -21,7 +23,9 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-20 px-4">
+    <div>
+      <Header/>
+    <div className="max-w-md mx-auto mt-20 px-4 w-screen h-[60vh]">
       <h1 className="text-2xl font-semibold mb-4">Reset your password</h1>
 
       {success ? (
@@ -51,6 +55,8 @@ export default function ForgotPasswordPage() {
           </button>
         </>
       )}
+    </div>
+    <Footer/>
     </div>
   )
 }

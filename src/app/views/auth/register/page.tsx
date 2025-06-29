@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { supabase } from '../../../lib/supabase/client';
 import AuthForm from '../../../components/auth/AuthForm';
 import Link from 'next/link';
+import Header from '@/app/components/ui/Header';
+import Footer from '@/app/components/ui/Footer';
 
 export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
@@ -48,6 +50,8 @@ export default function RegisterPage() {
   };
 
   return (
+    <div>
+      <Header />
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
       <div className="w-full max-w-md p-4">
         <div className="text-center mb-6">
@@ -64,6 +68,8 @@ export default function RegisterPage() {
 
         <AuthForm type="register" onSubmit={handleRegister} loading={loading} />
       </div>
+    </div>
+    <Footer />
     </div>
   );
 }
