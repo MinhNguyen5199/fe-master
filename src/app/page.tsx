@@ -68,9 +68,7 @@ const HomePage = () => {
           <h3 className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-sky-500 dark:from-teal-300 dark:to-sky-300 animate-fade-in">
             Trending Books Now
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <BookList/>
-          </div>
         </section>
 
         <section className="py-16">

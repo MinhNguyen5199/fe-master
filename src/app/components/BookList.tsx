@@ -31,8 +31,8 @@ export default function BookList() {
   if (books.length === 0) return <p className="text-center text-gray-600 dark:text-gray-300">No books found.</p>;
 
   return (
-    <div className="w-full">
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
+    <div className="w-full max-w-[1200px] mx-auto px-4">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {books.map((book) => (
           <BookCard key={book.book_id} book={book} />
         ))}
