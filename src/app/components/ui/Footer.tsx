@@ -11,17 +11,28 @@ const Footer = () => {
   href="https://bolt.new/"
   target="_blank"
   rel="noopener noreferrer"
-  className="mt-4 md:hidden"
+  className="mb-4 md:hidden"
 >
+  {/* Light */}
   <Image
     src="/badge.png"
     alt="Badge"
     width={100}
     height={100}
-    className="w-20 h-20 object-contain"
+    className="w-40 h-40 object-contain dark:hidden"
+    priority
+  />
+  {/* Dark */}
+  <Image
+    src="/whitebadge.png"
+    alt="White Badge"
+    width={100}
+    height={100}
+    className="w-40 h-40 object-contain hidden dark:block"
     priority
   />
 </Link>
+
 
         <div className="flex flex-col items-center md:items-start mb-6 md:mb-0">
           <Link href="/" className="flex items-center space-x-2 mb-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md">
@@ -82,16 +93,31 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <Link href="https://bolt.new/" target="_blank" rel="noopener noreferrer" className="mt-4 hidden md:inline-block">
-            <Image
-              src="/badge.png"
-              alt="Badge"
-              width={100}
-              height={100}
-              className="w-20 h-20 sm:w-20 sm:h-20 md:w-30 md:h-30 object-contain"
-              priority
-            />
-          </Link>
+        <Link
+  href="https://bolt.new/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-4 hidden md:inline-block"
+>
+  {/* Light */}
+  <Image
+    src="/badge.png"
+    alt="Badge"
+    width={100}
+    height={100}
+    className="w-30 h-30 object-contain dark:hidden"
+    priority
+  />
+  {/* Dark */}
+  <Image
+    src="/whitebadge.png"
+    alt="White Badge"
+    width={100}
+    height={100}
+    className="w-30 h-30 object-contain hidden dark:block"
+    priority
+  />
+</Link>
       </div>
     </footer>
   );
